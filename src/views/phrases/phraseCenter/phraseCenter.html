@@ -1,5 +1,9 @@
 <phrase-filter></phrase-filter>
-<action-bar></action-bar>
+<action-bar
+  is-select-all-on="vm.isAllPhraseSelected"
+  selected-phrase-number="vm.selectedPhraseNumber"
+  handle-select-all-click="vm.selectAllPhraseNumber()"
+  ></action-bar>
 <phrase-list
   model="vm.phrases"
   handle-item-add-note-click="vm.showAddNoteModal(phraseId)"

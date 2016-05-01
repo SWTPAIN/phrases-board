@@ -1,5 +1,6 @@
 import {
-  ADD_NOTE_TO_PHRASE
+  ADD_NOTE_TO_PHRASE,
+  SELECT_ALL_PHRASE_NUMBER
 } from './action-types';
 import {
   modalActions
@@ -15,5 +16,11 @@ export function addNoteToPhrase(phraseId, note) {
       }
     });
     dispatch(modalActions.closeModal());
+  };
+}
+
+export function selectAllPhraseNumber() {
+  return {
+    type: SELECT_ALL_PHRASE_NUMBER,
   };
 }

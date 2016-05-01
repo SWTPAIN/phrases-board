@@ -1,7 +1,8 @@
 import _ from 'lodash';
 import { createReducer } from 'src/utils';
 import {
-  ADD_NOTE_TO_PHRASE
+  ADD_NOTE_TO_PHRASE,
+  SELECT_ALL_PHRASE_NUMBER
 } from './action-types';
 
 
@@ -29,6 +30,10 @@ export const INITIAL_STATE = {
         notes: []
       },
     }
+  },
+  ui: {
+    isAllPhraseSelected: false,
+    selectedPhraseIds: []
   }
 };
 
@@ -47,6 +52,15 @@ export const phraseReducer = createReducer(INITIAL_STATE, {
           }
         }
       })
+    };
+  },
+  [SELECT_ALL_PHRASE_NUMBER](state) {
+    return {
+      ...state,
+      ui: {
+        ...state.ui,
+        isAllPhraseSelected: true,
+      }
     };
   }
 });

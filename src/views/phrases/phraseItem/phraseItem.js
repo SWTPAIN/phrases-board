@@ -12,9 +12,4 @@ import template from './phraseItem.html';
 })
 
 export class PhraseItemComponent {
-  constructor() {
-    this.editing = false;
-    this.statusUpdated = false;
-  }
-
 }
