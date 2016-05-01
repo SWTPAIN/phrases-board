@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Front Test for OneSky",
   "author": {
-    "name" : "KaFai Choi",
-    "email" : "kafaicoder@gmail.com"
+    "name": "KaFai Choi",
+    "email": "kafaicoder@gmail.com"
   },
   "license": "MIT",
   "private": true,
@@ -12,11 +12,12 @@
     "node": ">=5.2"
   },
   "scripts": {
-    "dev": "./node_modules/.bin/gulp run",
+    "dev": "./node_modules/.bin/gulp",
     "start": "npm run dev"
   },
   "dependencies": {
     "angular": "~1.5.2",
+    "angular-sanitize": "^1.5.5",
     "angular-ui-router": "~0.2.18",
     "babel-polyfill": "~6.7.2",
     "ng-redux": "~3.3.3",

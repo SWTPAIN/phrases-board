@@ -5,8 +5,6 @@ import template from './phraseList.html';
 @Component({
   bindings: {
     model: '<',
-    deleteTask: '&',
-    updateTask: '&'
   },
   controllerAs: 'vm',
   template
@@ -14,6 +12,6 @@ import template from './phraseList.html';
 
 export class PhraseListComponent {
   constructor() {
-    this.phrases = [1, 2];
+    this.phrases = this.model;
   }
 }

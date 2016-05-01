@@ -1,5 +1,6 @@
 import uiRouter from 'angular-ui-router';
 import ngRedux from 'ng-redux';
+import ngSanitize from 'angular-sanitize';
 import { combineReducers } from 'redux';
 
 // Core
@@ -25,7 +26,8 @@ import './styles/styles.scss';
 
 let app = angular.module('app', [
   ngRedux,
-  uiRouter
+  uiRouter,
+  ngSanitize
 ])
 
   .value('phraseActions', phraseActions)
@@ -44,7 +46,7 @@ let app = angular.module('app', [
 
   .config(['$ngReduxProvider', $ngReduxProvider => {
     $ngReduxProvider.createStoreWith(combineReducers({
-      phrases: phraseReducer
+      phrase: phraseReducer
     }), []);
   }])
 

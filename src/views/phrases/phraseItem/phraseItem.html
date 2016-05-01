@@ -10,27 +10,18 @@
             <span>
             ID:
             </span>
-            Start a petition
+            {{vm.model.id}}
           </div>
           <div class='context'>
             <span>
             Context:
             </span>
-            Start a petition
+            {{vm.model.context}}
           </div>
         </div>
       </div>
       <div class='phrase-body'>
-        <p>
-          The CO2
-          <strong class='highlighted'>
-          emission
-          </strong>
-          given in grams per kilometre represent the combined values. In line
-          with new European standards, the range shown displays the fuel
-          consumption and CO2 values from the smallest to largest wheel size
-          available on the selected model.
-        </p>
+        <div ng-bind-html="vm.model.value"></div>
       </div>
       <div class='phrase-footer'>
         <div class='fr'>

@@ -3,32 +3,27 @@ import template from './phraseCenter.html';
 
 
 @Component({
-  bindings: {
-    model: '<',
-    deleteTask: '&',
-    updateTask: '&'
-  },
   controllerAs: 'vm',
   template
 })
 
 export class PhraseCenterComponent {
-  constructor() {
-    this.editing = false;
-    this.statusUpdated = false;
-  }
+  static $inject = [
+    '$ngRedux',
+    '$scope',
+    'phraseActions'
+  ];
 
-  cancelEdit() {
-    this.editing = false;
-  }
+  constructor($ngRedux, $scope, phraseActions) {
+    const disconnect = $ngRedux.connect(state => ({
+      phrase: state.phrase
+    }), phraseActions)((state, actions) => {
+      this.actions = actions;
+      this.phrases = state.phrase.phrases;
+    });
 
-  edit() {
-    this.title = this.model.title;
-    this.editing = true;
-  }
+    $scope.$on('$destroy', disconnect);
 
-  delete() {
-    this.deleteTask({task: this.model});
   }
 
   save() {
