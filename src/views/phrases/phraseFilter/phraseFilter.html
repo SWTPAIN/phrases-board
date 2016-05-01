@@ -7,7 +7,10 @@
             <span class='add-on'>
             <i class='icon-search'></i>
             </span>
-            <input class='span12' placeholder='Find a phrase...' type='text'>
+            <input
+              ng-model="vm.filterKeyword"
+              ng-change="vm.handleFilterKeywordChange({keyword: vm.filterKeyword})"
+              class='span12' placeholder='Find a phrase...' type='text'>
           </div>
         </form>
       </div>

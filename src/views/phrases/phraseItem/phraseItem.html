@@ -42,7 +42,12 @@
               Add notes
               </a>
             </li>
-            <li><i class="icon-eye-open"></i></li>
+            <li ng-show="!vm.model.isVisible">
+              <i class="icon-eye-close"></i>
+            </li>
+            <li ng-show="vm.model.isVisible">
+              <i class="icon-eye-open"></i>
+            </li>
           </ul>
         </div>
       </div>

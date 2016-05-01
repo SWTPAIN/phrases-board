@@ -7,6 +7,7 @@ import {
   HIDE_SELECTED_PHRASE,
   SET_SELECTED_PHRASE_VISIBLE,
   UPDATE_DISPLAYING_PHRASE_TYPE,
+  UPDATE_FILTER_KEYWORD,
 } from './action-types';
 
 export const INITIAL_STATE = immutable.fromJS({
@@ -38,7 +39,8 @@ export const INITIAL_STATE = immutable.fromJS({
   },
   ui: {
     selectedPhraseIds: [],
-    displayingPhraseType: 'visible' // TODO use symbol or at least constant
+    displayingPhraseType: 'visible', // TODO use symbol or at least constant,
+    filterKeyword: 'brabbra'
   }
 });
 export const phraseReducer = createReducer(INITIAL_STATE, {
@@ -88,4 +90,7 @@ export const phraseReducer = createReducer(INITIAL_STATE, {
   [UPDATE_DISPLAYING_PHRASE_TYPE](state, action) {
     return state.setIn(['ui', 'displayingPhraseType'], action.payload.phraseType);
   },
+  [UPDATE_FILTER_KEYWORD](state, action) {
+    return state.setIn(['ui', 'filterKeyword'], action.payload.keyword);
+  }
 });

@@ -4,7 +4,8 @@ import {
   SELECT_ONE_PHRASE,
   HIDE_SELECTED_PHRASE,
   UPDATE_DISPLAYING_PHRASE_TYPE,
-  SET_SELECTED_PHRASE_VISIBLE
+  SET_SELECTED_PHRASE_VISIBLE,
+  UPDATE_FILTER_KEYWORD,
 } from './action-types';
 import {
   modalActions
@@ -63,6 +64,15 @@ export function updateDisplayingPhraseType(phraseType) {
     type: UPDATE_DISPLAYING_PHRASE_TYPE,
     payload: {
       phraseType
+    }
+  };
+}
+
+export function updateFilterKeyword(keyword) {
+  return {
+    type: UPDATE_FILTER_KEYWORD,
+    payload: {
+      keyword
     }
   };
 }

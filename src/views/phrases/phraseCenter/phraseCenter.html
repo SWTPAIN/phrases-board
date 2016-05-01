@@ -4,8 +4,10 @@
   handle-filter-tab-click="vm.updateDisplayingPhraseType(type)"
 ></phrase-summary>
 <phrase-filter
+  filter-keyword="vm.filterKeyword"
   displaying-phrase-type="vm.displayingPhraseType"
   handle-select-filter="vm.updateDisplayingPhraseType(type)"
+  handle-filter-keyword-change="vm.updateFilterKeyword(keyword)"
 ></phrase-filter>
 <action-bar
   is-select-all-on="vm.isAllPhraseSelected"

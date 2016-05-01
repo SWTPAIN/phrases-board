@@ -5,7 +5,9 @@ import './phraseFilter.scss';
 @Component({
   bindings: {
     displayingPhraseType: '<',
+    filterKeyword: '<',
     handleSelectFilter: '&',
+    handleFilterKeywordChange: '&',
   },
   controllerAs: 'vm',
   template
