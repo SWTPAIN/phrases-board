@@ -1,5 +1,6 @@
 import { Component } from 'src/utils';
 import template from './actionBar.html';
+import './actionBar.scss';
 
 
 @Component({

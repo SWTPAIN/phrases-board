@@ -8,20 +8,22 @@
           data-placement='top' data-toggle='tooltip' title='' type='checkbox'
           ng-model="vm.isSelectAllOn">
         <button
+          ng-disabled="vm.selectedPhraseNumber === 0"
           ng-click="vm.handleHideButtonClick()"
-          class='btn btn-download-multiple btn-narrow disabled tt'
-          data-original-title='Hide selected phrases from collaborators.'
-          data-placement='top' data-toggle='tooltip' title='' type='button'>
+          class='btn btn-download-multiple btn-narrow tt with-tooltip'
+          title='' type='button'>
           <i class='icon-eye-close'></i>
           Hide
+          <div class="tooltip">Hide selected phrases from collaborators.</div>
         </button>
         <button
+          ng-disabled="vm.selectedPhraseNumber === 0"
           ng-click="vm.handleSetVisibleButtonClick()"
-          class='btn btn-download-multiple btn-narrow disabled tt'
-          data-original-title='Make selected phrases visible to collaborators.'
-          data-placement='top' data-toggle='tooltip' title='' type='button'>
+          class='btn btn-download-multiple btn-narrow tt with-tooltip'
+          title='' type='button'>
           <i class='icon-eye-open'></i>
           Visible
+          <div class="tooltip">Make selected phrases visible to collaborators.</div>
         </button>
         <span class='selected-lang-no blue-txt'>
         Selected

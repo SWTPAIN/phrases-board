@@ -40,7 +40,7 @@ export const INITIAL_STATE = immutable.fromJS({
   ui: {
     selectedPhraseIds: [],
     displayingPhraseType: 'visible', // TODO use symbol or at least constant,
-    filterKeyword: 'brabbra'
+    filterKeyword: ''
   }
 });
 export const phraseReducer = createReducer(INITIAL_STATE, {

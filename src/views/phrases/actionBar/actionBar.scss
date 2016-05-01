@@ -1,0 +1,12 @@
+.tooltip {
+  transition: transform 0.6s;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+.with-tooltip:hover {
+  .tooltip {
+    opacity: 1;
+    transform: translateY(-50px);
+  }
+}

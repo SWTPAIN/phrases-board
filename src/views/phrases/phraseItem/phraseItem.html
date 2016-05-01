@@ -36,10 +36,11 @@
           <ul class='phrase-actions'>
             <li>
               <a
-                class='tt'
+                class='tt with-tooltip'
                 ng-click="vm.handleAddNoteClick()"
                 title=''>
-              Add notes
+                Add notes
+                <div class="tooltip">Write notes to translators to help them understand the context of this phrase</div>
               </a>
             </li>
             <li ng-show="!vm.model.isVisible">
