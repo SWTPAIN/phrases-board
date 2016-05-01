@@ -1,9 +1,10 @@
-import _ from 'lodash';
 import immutable from 'immutable';
 import { createReducer } from 'src/utils';
 import {
   ADD_NOTE_TO_PHRASE,
-  SELECT_ALL_PHRASE_NUMBER
+  TOGGLE_ALL_PHRASE,
+  SELECT_ONE_PHRASE,
+  UNSELECT_ALL_PHRASE
 } from './action-types';
 
 export const INITIAL_STATE = immutable.fromJS({
@@ -44,7 +45,20 @@ export const phraseReducer = createReducer(INITIAL_STATE, {
       phrase => phrase.set('notes', phrase.get('notes').push(action.payload.note))
     ));
   },
-  [SELECT_ALL_PHRASE_NUMBER](state) {
+  [TOGGLE_ALL_PHRASE](state) {
     return state.setIn(['ui', 'isAllPhraseSelected'], !state.getIn(['ui', 'isAllPhraseSelected']));
+  },
+  [UNSELECT_ALL_PHRASE](state) {
+    return state.setIn(['ui', 'isAllPhraseSelected'], false);
+  },
+  [SELECT_ONE_PHRASE](state, action) {
+    const selectedPhraseIds = state.getIn(['ui', 'selectedPhraseIds']);
+    const selectedPhraseIdIndex = selectedPhraseIds.findIndex(id => id === action.payload.phraseId);
+    const newSelectedPhraseIds = (
+      selectedPhraseIdIndex > -1 ?
+      selectedPhraseIds.delete(selectedPhraseIdIndex) :
+      selectedPhraseIds.push(action.payload.phraseId)
+    );
+    return state.setIn(['ui', 'selectedPhraseIds'], newSelectedPhraseIds);
   }
 });

@@ -1,6 +1,8 @@
 import {
   ADD_NOTE_TO_PHRASE,
-  SELECT_ALL_PHRASE_NUMBER
+  TOGGLE_ALL_PHRASE,
+  SELECT_ONE_PHRASE,
+  UNSELECT_ALL_PHRASE,
 } from './action-types';
 import {
   modalActions
@@ -19,8 +21,26 @@ export function addNoteToPhrase(phraseId, note) {
   };
 }
 
-export function selectAllPhraseNumber() {
+export function toggleAllPhrase() {
   return {
-    type: SELECT_ALL_PHRASE_NUMBER,
+    type: TOGGLE_ALL_PHRASE,
+  };
+}
+
+export function unselectAllPhrase() {
+  return {
+    type: UNSELECT_ALL_PHRASE,
+  };
+}
+
+export function selectOnePhrase(phraseId) {
+  return dispatch => {
+    dispatch(unselectAllPhrase());
+    dispatch({
+      type: SELECT_ONE_PHRASE,
+      payload: {
+        phraseId
+      }
+    });
   };
 }

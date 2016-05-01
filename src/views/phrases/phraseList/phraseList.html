@@ -6,6 +6,7 @@
           immutable="phrases"
           model="phrase"
           handle-add-note-click="vm.handleItemAddNoteClick({phraseId: phrase.id})"
+          handle-select-checkbox-click="vm.handleItemSelectCheckboxClick({phraseId: phrase.id})"
           ng-repeat="phrase in phrases track by $index"></phrase-item>
       </ul>
     </div>

@@ -6,6 +6,7 @@ import template from './phraseList.html';
   bindings: {
     model: '<',
     handleItemAddNoteClick: '&',
+    handleItemSelectCheckboxClick: '&',
   },
   controllerAs: 'vm',
   template

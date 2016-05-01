@@ -2,10 +2,11 @@
 <action-bar
   is-select-all-on="vm.isAllPhraseSelected"
   selected-phrase-number="vm.selectedPhraseNumber"
-  handle-select-all-click="vm.selectAllPhraseNumber()"
+  handle-select-all-click="vm.toggleAllPhrase()"
   ></action-bar>
 <phrase-list
   model="vm.phrases"
+  handle-item-select-checkbox-click="vm.selectOnePhrase(phraseId)"
   handle-item-add-note-click="vm.showAddNoteModal(phraseId)"
 >
 </phrase-list>

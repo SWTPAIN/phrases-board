@@ -7,7 +7,7 @@ function populatePhrasesSelected(phrases, isAllSelected, selectedIds) {
     return phrases.map(phrase => phrase.set('selected', true));
   }
   return phrases.map(phrase => {
-    if (selectedIds.has(phrase.id)) {
+    if (selectedIds.includes(phrase.get('id'))) {
       return phrase.set('selected', true);
     } else {
       return phrase.set('selected', false);
@@ -49,7 +49,12 @@ export class PhraseCenterComponent {
     this.actions.showAddNoteModal(phraseId);
   }
 
-  selectAllPhraseNumber() {
-    this.actions.selectAllPhraseNumber();
+  toggleAllPhrase() {
+    this.actions.toggleAllPhrase();
   }
+
+  selectOnePhrase(phraseId) {
+    this.actions.selectOnePhrase(phraseId);
+  }
+
 }
