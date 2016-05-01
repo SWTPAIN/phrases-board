@@ -18,6 +18,11 @@
             </span>
             {{vm.model.context}}
           </div>
+          <div class='notes'>
+            <div ng-repeat="note in vm.model.notes track by $index">
+              {{note}}
+            </div>
+          </div>
         </div>
       </div>
       <div class='phrase-body'>
@@ -27,10 +32,10 @@
         <div class='fr'>
           <ul class='phrase-actions'>
             <li>
-              <a class='tt'
-                data-original-title='Write notes to translators to help them understand the context of this phrase'
-                data-placement='top' data-toggle='modal'
-                href='.modal-note-to-translators' title=''>
+              <a
+                class='tt'
+                ng-click="vm.handleAddNoteClick()"
+                title=''>
               Add notes
               </a>
             </li>

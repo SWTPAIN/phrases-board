@@ -5,6 +5,7 @@ import template from './phraseItem.html';
 @Component({
   bindings: {
     model: '<',
+    handleAddNoteClick: '&',
   },
   controllerAs: 'vm',
   template

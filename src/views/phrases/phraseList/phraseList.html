@@ -4,6 +4,7 @@
       <ul class='phrase-manage-list'>
         <phrase-item
           model="phrase"
+          handle-add-note-click="vm.handleItemAddNoteClick({phraseId: phrase.id})"
           ng-repeat="phrase in vm.phrases track by $index"></phrase-item>
       </ul>
     </div>

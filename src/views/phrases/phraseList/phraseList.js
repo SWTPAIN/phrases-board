@@ -5,6 +5,7 @@ import template from './phraseList.html';
 @Component({
   bindings: {
     model: '<',
+    handleItemAddNoteClick: '&',
   },
   controllerAs: 'vm',
   template

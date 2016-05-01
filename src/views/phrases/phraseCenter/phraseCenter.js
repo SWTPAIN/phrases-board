@@ -11,13 +11,14 @@ export class PhraseCenterComponent {
   static $inject = [
     '$ngRedux',
     '$scope',
-    'phraseActions'
+    'phraseActions',
+    'modalActions',
   ];
 
-  constructor($ngRedux, $scope, phraseActions) {
+  constructor($ngRedux, $scope, phraseActions, modalActions) {
     const disconnect = $ngRedux.connect(state => ({
       phrase: state.phrase
-    }), phraseActions)((state, actions) => {
+    }), {...phraseActions, ...modalActions})((state, actions) => {
       this.actions = actions;
       this.phrases = state.phrase.phrases;
     });
@@ -26,19 +27,7 @@ export class PhraseCenterComponent {
 
   }
 
-  save() {
-    if (this.editing) {
-      if (this.model.title !== this.title) {
-        this.model.title = this.title;
-        this.updateTask({task: this.model});
-      }
-      this.editing = false;
-    }
-  }
-
-  toggleCompleted() {
-    this.model.completed = !this.model.completed;
-    this.updateTask({task: this.model});
-    this.statusUpdated = this.model.completed;
+  showAddNoteModal(phraseId) {
+    this.actions.showAddNoteModal(phraseId);
   }
 }

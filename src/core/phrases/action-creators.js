@@ -5,6 +5,6 @@ import {
 
 export function addNoteToPhrase() {
   return {
-    types: ADD_NOTE_TO_PHRASE
+    type: ADD_NOTE_TO_PHRASE
   };
 }

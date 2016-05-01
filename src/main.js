@@ -5,6 +5,7 @@ import { combineReducers } from 'redux';
 
 // Core
 import { phraseActions, phraseReducer } from './core/phrases';
+import { modalActions, modalReducer } from './core/modal';
 
 // Router
 import { routerConfig } from './router';
@@ -18,7 +19,8 @@ import {
   ActionBarComponent,
   PhraseFilterComponent,
   PhraseListComponent,
-  PhraseItemComponent } from './views/phrases';
+  PhraseItemComponent,
+  NewNoteModalComponent } from './views/phrases';
 
 // Styles
 import './styles/styles.scss';
@@ -31,6 +33,7 @@ let app = angular.module('app', [
 ])
 
   .value('phraseActions', phraseActions)
+  .value('modalActions', modalActions)
 
   .component('app', AppComponent)
   .component('phraseSummary', PhraseSummaryComponent)
@@ -39,6 +42,7 @@ let app = angular.module('app', [
   .component('phraseFilter', PhraseFilterComponent)
   .component('phraseList', PhraseListComponent)
   .component('phraseItem', PhraseItemComponent)
+  .component('newNoteModal', NewNoteModalComponent)
 
 
   .directive('escape', escapeDirective)
@@ -46,7 +50,8 @@ let app = angular.module('app', [
 
   .config(['$ngReduxProvider', $ngReduxProvider => {
     $ngReduxProvider.createStoreWith(combineReducers({
-      phrase: phraseReducer
+      phrase: phraseReducer,
+      modal: modalReducer
     }), []);
   }])
 
