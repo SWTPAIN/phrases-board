@@ -1,11 +1,11 @@
 import { Component } from 'src/utils';
 import template from './phraseFilter.html';
-
+import './phraseFilter.scss';
 
 @Component({
   bindings: {
-    model: '<',
-    handleFilterTabClick: '&',
+    displayingPhraseType: '<',
+    handleSelectFilter: '&',
   },
   controllerAs: 'vm',
   template

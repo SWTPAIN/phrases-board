@@ -10,26 +10,15 @@
             <input class='span12' placeholder='Find a phrase...' type='text'>
           </div>
         </form>
-      </div
+      </div>
       <div class='content-box-header-content fr'>
-        <div class='count-unit'>
-          Filter:
-            <button type="button" class="btn dropdown-toggle btn-default">
-              All phrases
-            </button>
-          </div>
-          <select class='selectpicker show-tick' data-width='180px'>
-            <option
-              ng-click="vm.handleFilterTabClick({type: 'all'})"
-              data-icon='icon-align-left'>All phrases</option>
-            <option
-              ng-click="vm.handleFilterTabClick({type: 'visible'})"
-              data-icon='icon-eye-open'>Visible phrases</option>
-            <option
-              ng-click="vm.handleFilterTabClick({type: 'hidden'})"
-              data-icon='icon-eye-close'>Hidden phrases</option>
-          </select>
-        </div>
+        <select
+          ng-change="vm.handleSelectFilter({type: vm.displayingPhraseType})"
+          ng-model="vm.displayingPhraseType">
+          <option value="all">All Phrases</option>
+          <option value="visible">Visible Phrases</option>
+          <option value="hidden">Hidden Phrases</option>
+        </select>
       </div>
     </div>
   </div>

@@ -4,7 +4,8 @@
   handle-filter-tab-click="vm.updateDisplayingPhraseType(type)"
 ></phrase-summary>
 <phrase-filter
-  handle-filter-tab-click="vm.updateDisplayingPhraseType(type)"
+  displaying-phrase-type="vm.displayingPhraseType"
+  handle-select-filter="vm.updateDisplayingPhraseType(type)"
 ></phrase-filter>
 <action-bar
   is-select-all-on="vm.isAllPhraseSelected"
