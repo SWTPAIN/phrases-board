@@ -1,15 +1,22 @@
-<div id="my-modal" class="modal fade" ng-class="{in: vm.isOpen}" >
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button
-                  ng-click="vm.handleCloseModalClick()"
-                  type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Title</h4>
-            </div>
-            <div class="modal-body">
-                Hello World!
-            </div>
-        </div>
+<div
+  ng-class="{in: vm.isOpen}"
+  class='modal-note-to-translators modal-phrase modal fade' role='dialog' tabindex='-1'>
+  <form>
+    <div class='modal-header'>
+      <button ng-click="vm.handleCloseModalClick()" class='close' data-dismiss='modal' type='button'>×</button>
+      <h3 id='myModalLabel'>Note to translators</h3>
     </div>
+    <div class='modal-body'>
+      <label class='hide' for='notes-to-translator'>Note to Translators</label>
+      <textarea
+        ng-model="vm.note"
+        class='input-block-level' id='notes-to-translator' name='notes-to-translator'
+        placeholder='Write a note to help translators understand the context of your phrase, for example, This phrase belongs to the welcome screen.'
+        rows='3'></textarea>
+    </div>
+    <div class='modal-footer'>
+      <button ng-click="vm.handleCloseModalClick()">Cancel</button>
+      <button ng-click="vm.handleSaveButtonClick()" class='btn btn-primary'>Save</button>
+    </div>
+  </form>
 </div>

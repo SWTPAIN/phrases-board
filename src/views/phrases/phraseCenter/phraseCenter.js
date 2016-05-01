@@ -1,4 +1,4 @@
-import { Component } from 'src/utils';
+import { Component, denormalize } from 'src/utils';
 import template from './phraseCenter.html';
 
 
@@ -20,7 +20,7 @@ export class PhraseCenterComponent {
       phrase: state.phrase
     }), {...phraseActions, ...modalActions})((state, actions) => {
       this.actions = actions;
-      this.phrases = state.phrase.phrases;
+      this.phrases = denormalize(state.phrase.data.phrases);
     });
 
     $scope.$on('$destroy', disconnect);

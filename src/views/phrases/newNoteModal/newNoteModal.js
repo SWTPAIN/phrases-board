@@ -12,14 +12,17 @@ export class NewNoteModalComponent {
     '$ngRedux',
     '$scope',
     'modalActions',
+    'phraseActions'
   ];
 
-  constructor($ngRedux, $scope, modalActions) {
+  constructor($ngRedux, $scope, modalActions, phraseActions) {
     const disconnect = $ngRedux.connect(state => ({
       modal: state.modal
-    }), modalActions)((state, actions) => {
+    }), {...modalActions, ...phraseActions})((state, actions) => {
+      this.phraseId = state.modal.data.phraseId;
       this.actions = actions;
       this.isOpen = state.modal.ui.isOpen;
+      this.note = '';
     });
 
     $scope.$on('$destroy', disconnect);
@@ -27,6 +30,10 @@ export class NewNoteModalComponent {
 
   handleCloseModalClick() {
     this.actions.closeModal();
+  }
+
+  handleSaveButtonClick() {
+    this.actions.addNoteToPhrase(this.phraseId, this.note);
   }
 
 }

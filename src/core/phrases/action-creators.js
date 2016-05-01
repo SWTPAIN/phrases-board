@@ -3,8 +3,12 @@ import {
 } from './action-types';
 
 
-export function addNoteToPhrase() {
+export function addNoteToPhrase(phraseId, note) {
   return {
-    type: ADD_NOTE_TO_PHRASE
+    type: ADD_NOTE_TO_PHRASE,
+    payload: {
+      phraseId,
+      note
+    }
   };
 }

@@ -25,6 +25,8 @@ export const modalActions = {
 const INITIAL_STATE = {
   ui: {
     isOpen: false,
+  },
+  data: {
     phraseId: null,
   }
 };
@@ -35,14 +37,16 @@ export const modalReducer = createReducer(INITIAL_STATE, {
     return {
       ui: {
         isOpen: true,
+      },
+      data: {
         phraseId: action.payload.phraseId
       }
     };
   },
   [CLOSE_MODAL](state) {
     return {
+      ...state,
       ui: {
-        ...state.ui,
         isOpen: false,
       }
     };
