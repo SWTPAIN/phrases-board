@@ -1,6 +1,7 @@
 import uiRouter from 'angular-ui-router';
 import ngRedux from 'ng-redux';
 import ngSanitize from 'angular-sanitize';
+import thunk from 'redux-thunk';
 import { combineReducers } from 'redux';
 
 // Core
@@ -52,7 +53,7 @@ let app = angular.module('app', [
     $ngReduxProvider.createStoreWith(combineReducers({
       phrase: phraseReducer,
       modal: modalReducer
-    }), []);
+    }), [thunk]);
   }])
 
   .config(routerConfig);
