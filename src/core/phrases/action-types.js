@@ -1,0 +1,1 @@
+export const ADD_NOTE_TO_PHRASE = 'ADD_NOTE_TO_PHRASE';

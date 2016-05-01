@@ -1,0 +1,21 @@
+@import
+'settings',
+'~minx/src/settings',
+'~minx/src/functions',
+'~minx/src/mixins',
+'~minx/src/reset',
+'~minx/src/elements';
+
+@import
+"grid",
+"app/header",
+"app/main",
+"tasks/task-filters",
+"tasks/task-form",
+"tasks/task-item",
+"tasks/task-list";
+
+
+::selection {
+  background: rgba(200,200,255,.1);
+}
