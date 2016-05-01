@@ -19,9 +19,15 @@
             </button>
           </div>
           <select class='selectpicker show-tick' data-width='180px'>
-            <option data-icon='icon-align-left'>All phrases</option>
-            <option data-icon='icon-eye-open'>Visible phrases</option>
-            <option data-icon='icon-eye-close'>Hidden phrases</option>
+            <option
+              ng-click="vm.handleFilterTabClick({type: 'all'})"
+              data-icon='icon-align-left'>All phrases</option>
+            <option
+              ng-click="vm.handleFilterTabClick({type: 'visible'})"
+              data-icon='icon-eye-open'>Visible phrases</option>
+            <option
+              ng-click="vm.handleFilterTabClick({type: 'hidden'})"
+              data-icon='icon-eye-close'>Hidden phrases</option>
           </select>
         </div>
       </div>

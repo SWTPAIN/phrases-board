@@ -2,6 +2,8 @@ import {
   ADD_NOTE_TO_PHRASE,
   TOGGLE_ALL_PHRASE,
   SELECT_ONE_PHRASE,
+  HIDE_SELECTED_PHRASE,
+  UPDATE_DISPLAYING_PHRASE_TYPE,
 } from './action-types';
 import {
   modalActions
@@ -40,5 +42,20 @@ export function selectOnePhrase(phraseId) {
         phraseId
       }
     });
+  };
+}
+
+export function hideSelectedPhrase() {
+  return {
+    type: HIDE_SELECTED_PHRASE,
+  };
+}
+
+export function updateDisplayingPhraseType(phraseType) {
+  return {
+    type: UPDATE_DISPLAYING_PHRASE_TYPE,
+    payload: {
+      phraseType
+    }
   };
 }

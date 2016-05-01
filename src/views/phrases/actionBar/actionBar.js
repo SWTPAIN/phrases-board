@@ -7,6 +7,7 @@ import template from './actionBar.html';
     isSelectAllOn: '<',
     selectedPhraseNumber: '<',
     handleSelectAllClick: '&',
+    handleHideButtonClick: '&',
   },
   controllerAs: 'vm',
   template

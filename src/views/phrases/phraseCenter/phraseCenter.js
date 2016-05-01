@@ -11,6 +11,16 @@ function populatePhrasesSelected(phrases, selectedIds) {
   });
 }
 
+function filterPhrasesByDisplayingType(phrases, type) {
+  if (type === 'visible') {
+    return phrases.filter(phrase => phrase.get('isVisible'));
+  } else if (type === 'hidden') {
+    return phrases.filter(phrase => !phrase.get('isVisible'));
+  } else {
+    return phrases;
+  }
+}
+
 @Component({
   controllerAs: 'vm',
   template
@@ -26,12 +36,17 @@ export class PhraseCenterComponent {
   constructor($ngRedux, $scope, phraseActions, modalActions) {
     const disconnect = $ngRedux.connect(state => ({
       phrases: state.getIn(['phrase', 'data', 'phrases']),
-      selectedPhraseIds: state.getIn(['phrase', 'ui', 'selectedPhraseIds'])
+      selectedPhraseIds: state.getIn(['phrase', 'ui', 'selectedPhraseIds']),
+      displayingPhraseType: state.getIn(['phrase', 'ui', 'displayingPhraseType']),
     }), {...phraseActions, ...modalActions})((state, actions) => {
       this.actions = actions;
       this.selectedPhraseIds = state.selectedPhraseIds;
       this.isAllPhraseSelected = state.selectedPhraseIds.size === state.phrases.size;
-      this.phrases = populatePhrasesSelected(state.phrases, this.selectedPhraseIds);
+      this.displayingPhraseType = state.displayingPhraseType;
+      this.phrases = filterPhrasesByDisplayingType(
+        populatePhrasesSelected(state.phrases, this.selectedPhraseIds),
+        this.displayingPhraseTyp
+      );
       this.selectedPhraseNumber = this.selectedPhraseIds.size;
     });
 
@@ -50,6 +65,14 @@ export class PhraseCenterComponent {
 
   selectOnePhrase(phraseId) {
     this.actions.selectOnePhrase(phraseId);
+  }
+
+  hideSelectedPhrase() {
+    this.actions.hideSelectedPhrase();
+  }
+
+  updateDisplayingPhraseType(type) {
+    this.actions.updateDisplayingPhraseType(type);
   }
 
 }

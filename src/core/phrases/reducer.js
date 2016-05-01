@@ -4,6 +4,8 @@ import {
   ADD_NOTE_TO_PHRASE,
   TOGGLE_ALL_PHRASE,
   SELECT_ONE_PHRASE,
+  HIDE_SELECTED_PHRASE,
+  UPDATE_DISPLAYING_PHRASE_TYPE,
 } from './action-types';
 
 export const INITIAL_STATE = immutable.fromJS({
@@ -17,7 +19,8 @@ export const INITIAL_STATE = immutable.fromJS({
             This is some <strong>random html code</strong>
           </p>
         `,
-        notes: []
+        notes: [],
+        isVisible: true,
       },
       {
         id: 2,
@@ -27,12 +30,14 @@ export const INITIAL_STATE = immutable.fromJS({
             CEO <strong>random html coderrrrr</strong>
           </p>
         `,
-        notes: []
+        notes: [],
+        isVisible: true,
       }
     ]
   },
   ui: {
-    selectedPhraseIds: []
+    selectedPhraseIds: [],
+    displayingPhraseType: 'visible' // TODO use symbol or at least constant
   }
 });
 export const phraseReducer = createReducer(INITIAL_STATE, {
@@ -60,5 +65,11 @@ export const phraseReducer = createReducer(INITIAL_STATE, {
       selectedPhraseIds.push(action.payload.phraseId)
     );
     return state.setIn(['ui', 'selectedPhraseIds'], newSelectedPhraseIds);
-  }
+  },
+  [HIDE_SELECTED_PHRASE](state, action) {
+    debugger;
+  },
+  [UPDATE_DISPLAYING_PHRASE_TYPE](state, action) {
+    return state.setIn(['ui', 'displayingPhraseType'], action.payload.phraseType)
+  },
 });

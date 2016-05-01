@@ -1,12 +1,18 @@
-<phrase-filter></phrase-filter>
+<phrase-summary
+  displaying-phrase-type="vm.displayingPhraseType"
+  handle-filter-tab-click="vm.updateDisplayingPhraseType(type)"
+></phrase-summary>
+<phrase-filter
+  handle-filter-tab-click="vm.updateDisplayingPhraseType(type)"
+></phrase-filter>
 <action-bar
   is-select-all-on="vm.isAllPhraseSelected"
   selected-phrase-number="vm.selectedPhraseNumber"
   handle-select-all-click="vm.toggleAllPhrase()"
-  ></action-bar>
+  handle-hide-button-click="vm.hideSelectedPhrase()"
+></action-bar>
 <phrase-list
   model="vm.phrases"
   handle-item-select-checkbox-click="vm.selectOnePhrase(phraseId)"
   handle-item-add-note-click="vm.showAddNoteModal(phraseId)"
->
-</phrase-list>
+></phrase-list>

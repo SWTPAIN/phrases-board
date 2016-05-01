@@ -1,7 +1,9 @@
 <div class="row-fluid project-nav-phrase-meta">
   <ol class="list-unstyled project-nav-phrase-meta-list">
     <li class="span4 active">
-      <a href="/ui-mockups/projects/app/phrases">
+      <a
+        ng-class="{selected: (vm.displayingPhraseType === 'visible')}"
+        ng-click="vm.handleFilterTabClick({type: 'visible'})">
       <span class="highlight">
         1
       </span>
@@ -9,7 +11,10 @@
       </a>
     </li>
     <li class="span4">
-      <a href="/ui-mockups/projects/app/phrases">
+      <a
+        ng-class="{selected: (vm.displayingPhraseType === 'hidden')}"
+        ng-click="vm.handleFilterTabClick({type: 'hidden'})"
+      >
         <span class="highlight">
           0
         </span>
@@ -17,7 +22,10 @@
       </a>
     </li>
     <li class="span4">
-      <a href="/ui-mockups/projects/app/phrases">
+      <a
+        ng-class="{selected: (vm.displayingPhraseType === 'all')}"
+        ng-click="vm.handleFilterTabClick({type: 'all'})"
+      >
         <span class="highlight">
           52
         </span>
