@@ -3,7 +3,9 @@ import ngRedux from 'ng-redux';
 import ngSanitize from 'angular-sanitize';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-immutable';
+import immutable from 'angular-immutable';
+
 
 // Core
 import { phraseActions, phraseReducer } from './core/phrases';
@@ -31,7 +33,8 @@ import './styles/styles.scss';
 let app = angular.module('app', [
   ngRedux,
   uiRouter,
-  ngSanitize
+  ngSanitize,
+  immutable
 ])
 
   .value('phraseActions', phraseActions)

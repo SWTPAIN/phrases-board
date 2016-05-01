@@ -12,7 +12,17 @@ import template from './phraseList.html';
 })
 
 export class PhraseListComponent {
-  constructor() {
-    this.phrases = this.model;
+  static $inject = [
+    '$scope',
+  ];
+
+  constructor($scope) {
+    $scope.phrases = this.model;
+    this.$scope = $scope;
+  }
+
+  $onChanges() {
+    // huge hack here. otherwise phrase item not update
+    this.$scope.phrases = this.model;
   }
 }

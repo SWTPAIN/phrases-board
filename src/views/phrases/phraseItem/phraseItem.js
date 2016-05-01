@@ -12,4 +12,5 @@ import template from './phraseItem.html';
 })
 
 export class PhraseItemComponent {
+
 }

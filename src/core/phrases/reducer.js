@@ -1,15 +1,15 @@
 import _ from 'lodash';
+import immutable from 'immutable';
 import { createReducer } from 'src/utils';
 import {
   ADD_NOTE_TO_PHRASE,
   SELECT_ALL_PHRASE_NUMBER
 } from './action-types';
 
-
-export const INITIAL_STATE = {
+export const INITIAL_STATE = immutable.fromJS({
   data: {
-    phrases: {
-      1: {
+    phrases: [
+      {
         id: 1,
         context: 'Start a petition',
         value: `
@@ -19,7 +19,7 @@ export const INITIAL_STATE = {
         `,
         notes: []
       },
-      2: {
+      {
         id: 2,
         context: 'Start a petition',
         value: `
@@ -28,39 +28,23 @@ export const INITIAL_STATE = {
           </p>
         `,
         notes: []
-      },
-    }
+      }
+    ]
   },
   ui: {
     isAllPhraseSelected: false,
     selectedPhraseIds: []
   }
-};
-
-
+});
 export const phraseReducer = createReducer(INITIAL_STATE, {
   [ADD_NOTE_TO_PHRASE](state, action) {
-    return {
-      ...state,
-      data: _.merge(state.data, {}, {
-        phrases: {
-          [action.payload.phraseId]: {
-            notes: [
-              ...state.data.phrases[action.payload.phraseId].notes,
-              action.payload.note
-            ]
-          }
-        }
-      })
-    };
+    const phrases = state.getIn(['data', 'phrases']);
+    return state.setIn(['data', 'phrases'], phrases.update(
+      phrases.findIndex(phrase => phrase.get('id') === action.payload.phraseId),
+      phrase => phrase.set('notes', phrase.get('notes').push(action.payload.note))
+    ));
   },
   [SELECT_ALL_PHRASE_NUMBER](state) {
-    return {
-      ...state,
-      ui: {
-        ...state.ui,
-        isAllPhraseSelected: true,
-      }
-    };
+    return state.setIn(['ui', 'isAllPhraseSelected'], !state.getIn(['ui', 'isAllPhraseSelected']));
   }
 });

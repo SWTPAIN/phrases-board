@@ -17,11 +17,12 @@ export class NewNoteModalComponent {
 
   constructor($ngRedux, $scope, modalActions, phraseActions) {
     const disconnect = $ngRedux.connect(state => ({
-      modal: state.modal
+      phraseId: state.getIn(['modal', 'data', 'phraseId']),
+      isOpen: state.getIn(['modal', 'ui', 'isOpen']),
     }), {...modalActions, ...phraseActions})((state, actions) => {
-      this.phraseId = state.modal.data.phraseId;
+      this.phraseId = state.phraseId;
       this.actions = actions;
-      this.isOpen = state.modal.ui.isOpen;
+      this.isOpen = state.isOpen;
       this.note = '';
     });
 

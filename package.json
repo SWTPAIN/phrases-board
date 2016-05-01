@@ -17,11 +17,14 @@
   },
   "dependencies": {
     "angular": "~1.5.2",
+    "angular-immutable": "^0.1.2",
     "angular-sanitize": "^1.5.5",
     "angular-ui-router": "~0.2.18",
     "babel-polyfill": "~6.7.2",
+    "immutable": "^3.8.1",
     "ng-redux": "~3.3.3",
     "redux": "~3.3.1",
+    "redux-immutable": "^3.0.6",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1"
   },

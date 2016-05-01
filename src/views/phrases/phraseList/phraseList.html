@@ -3,9 +3,10 @@
     <div class='phrase-manage-list-container'>
       <ul class='phrase-manage-list'>
         <phrase-item
+          immutable="phrases"
           model="phrase"
           handle-add-note-click="vm.handleItemAddNoteClick({phraseId: phrase.id})"
-          ng-repeat="phrase in vm.phrases track by $index"></phrase-item>
+          ng-repeat="phrase in phrases track by $index"></phrase-item>
       </ul>
     </div>
   </div>
