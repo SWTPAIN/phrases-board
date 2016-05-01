@@ -1,4 +1,5 @@
 import immutable from 'immutable';
+import { getData, savePhraseNotes } from '../../utils/localStorage';
 import { createReducer } from 'src/utils';
 import {
   ADD_NOTE_TO_PHRASE,
@@ -11,32 +12,7 @@ import {
 } from './action-types';
 
 export const INITIAL_STATE = immutable.fromJS({
-  data: {
-    phrases: [
-      {
-        id: 1,
-        context: 'Start a petition',
-        value: `
-          <p>
-            This is some <strong>random html code</strong>
-          </p>
-        `,
-        notes: [],
-        isVisible: true,
-      },
-      {
-        id: 2,
-        context: 'Start a petition',
-        value: `
-          <p>
-            CEO <strong>random html coderrrrr</strong>
-          </p>
-        `,
-        notes: [],
-        isVisible: true,
-      }
-    ]
-  },
+  data: getData(),
   ui: {
     selectedPhraseIds: [],
     displayingPhraseType: 'visible', // TODO use symbol or at least constant,
@@ -46,10 +22,16 @@ export const INITIAL_STATE = immutable.fromJS({
 export const phraseReducer = createReducer(INITIAL_STATE, {
   [ADD_NOTE_TO_PHRASE](state, action) {
     const phrases = state.getIn(['data', 'phrases']);
-    return state.setIn(['data', 'phrases'], phrases.update(
+    const newPhrases = phrases.update(
       phrases.findIndex(phrase => phrase.get('id') === action.payload.phraseId),
-      phrase => phrase.set('notes', phrase.get('notes').push(action.payload.note))
-    ));
+      phrase => {
+        const newNotes = phrase.get('notes').push(action.payload.note);
+        // side-effect
+        savePhraseNotes(action.payload.phraseId, newNotes.toJS());
+        return phrase.set('notes', newNotes);
+      }
+    );
+    return state.setIn(['data', 'phrases'], newPhrases);
   },
   [TOGGLE_ALL_PHRASE](state, action) {
     const selectedPhraseIds = (

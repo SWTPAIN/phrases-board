@@ -1,0 +1,18 @@
+{
+  "phrases": [
+    {
+      "id": 1,
+      "context": "Start a petition",
+      "value": "<p>This is some <strong>random html code</strong></p>",
+      "notes": [],
+      "isVisible": true
+    },
+    {
+      "id": 2,
+      "context": "Start a petition",
+      "value": "<p>CEO <strong>random html coderrrrr</strong></p>",
+      "notes": [],
+      "isVisible": true
+    }
+  ]
+}
