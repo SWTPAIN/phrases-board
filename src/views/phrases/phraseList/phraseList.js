@@ -18,12 +18,12 @@ export class PhraseListComponent {
   ];
 
   constructor($scope) {
-    $scope.phrases = this.model;
+    $scope.phrases = this.model.sort();
     this.$scope = $scope;
   }
 
   $onChanges() {
     // huge hack here. otherwise phrase item not update
-    this.$scope.phrases = this.model;
+    this.$scope.phrases = this.model.sort();
   }
 }
