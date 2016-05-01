@@ -1,11 +1,7 @@
 import { Component } from 'src/utils';
 import template from './phraseCenter.html';
 
-function populatePhrasesSelected(phrases, isAllSelected, selectedIds) {
-  // when isAllSelected, make all phrases selected to true
-  if (isAllSelected) {
-    return phrases.map(phrase => phrase.set('selected', true));
-  }
+function populatePhrasesSelected(phrases, selectedIds) {
   return phrases.map(phrase => {
     if (selectedIds.includes(phrase.get('id'))) {
       return phrase.set('selected', true);
@@ -30,13 +26,12 @@ export class PhraseCenterComponent {
   constructor($ngRedux, $scope, phraseActions, modalActions) {
     const disconnect = $ngRedux.connect(state => ({
       phrases: state.getIn(['phrase', 'data', 'phrases']),
-      isAllPhraseSelected: state.getIn(['phrase', 'ui', 'isAllPhraseSelected']),
       selectedPhraseIds: state.getIn(['phrase', 'ui', 'selectedPhraseIds'])
     }), {...phraseActions, ...modalActions})((state, actions) => {
       this.actions = actions;
-      this.isAllPhraseSelected = state.isAllPhraseSelected;
       this.selectedPhraseIds = state.selectedPhraseIds;
-      this.phrases = populatePhrasesSelected(state.phrases, this.isAllPhraseSelected, this.selectedPhraseIds);
+      this.isAllPhraseSelected = state.selectedPhraseIds.size === state.phrases.size;
+      this.phrases = populatePhrasesSelected(state.phrases, this.selectedPhraseIds);
       this.selectedPhraseNumber = this.selectedPhraseIds.size;
     });
 

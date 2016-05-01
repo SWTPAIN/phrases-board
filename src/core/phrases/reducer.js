@@ -4,7 +4,6 @@ import {
   ADD_NOTE_TO_PHRASE,
   TOGGLE_ALL_PHRASE,
   SELECT_ONE_PHRASE,
-  UNSELECT_ALL_PHRASE
 } from './action-types';
 
 export const INITIAL_STATE = immutable.fromJS({
@@ -33,7 +32,6 @@ export const INITIAL_STATE = immutable.fromJS({
     ]
   },
   ui: {
-    isAllPhraseSelected: false,
     selectedPhraseIds: []
   }
 });
@@ -45,11 +43,13 @@ export const phraseReducer = createReducer(INITIAL_STATE, {
       phrase => phrase.set('notes', phrase.get('notes').push(action.payload.note))
     ));
   },
-  [TOGGLE_ALL_PHRASE](state) {
-    return state.setIn(['ui', 'isAllPhraseSelected'], !state.getIn(['ui', 'isAllPhraseSelected']));
-  },
-  [UNSELECT_ALL_PHRASE](state) {
-    return state.setIn(['ui', 'isAllPhraseSelected'], false);
+  [TOGGLE_ALL_PHRASE](state, action) {
+    const selectedPhraseIds = (
+      state.getIn(['ui', 'selectedPhraseIds']).isEmpty() ?
+      action.payload.phraseIds :
+      immutable.fromJS([])
+    );
+    return state.setIn(['ui', 'selectedPhraseIds'], selectedPhraseIds);
   },
   [SELECT_ONE_PHRASE](state, action) {
     const selectedPhraseIds = state.getIn(['ui', 'selectedPhraseIds']);
