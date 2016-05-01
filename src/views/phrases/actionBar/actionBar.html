@@ -15,7 +15,9 @@
           <i class='icon-eye-close'></i>
           Hide
         </button>
-        <button class='btn btn-download-multiple btn-narrow disabled tt'
+        <button
+          ng-click="vm.handleSetVisibleButtonClick()"
+          class='btn btn-download-multiple btn-narrow disabled tt'
           data-original-title='Make selected phrases visible to collaborators.'
           data-placement='top' data-toggle='tooltip' title='' type='button'>
           <i class='icon-eye-open'></i>

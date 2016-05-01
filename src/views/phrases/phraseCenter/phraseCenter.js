@@ -13,7 +13,9 @@ function populatePhrasesSelected(phrases, selectedIds) {
 
 function filterPhrasesByDisplayingType(phrases, type) {
   if (type === 'visible') {
-    return phrases.filter(phrase => phrase.get('isVisible'));
+    return phrases.filter(phrase => {
+      return phrase.get('isVisible');
+    });
   } else if (type === 'hidden') {
     return phrases.filter(phrase => !phrase.get('isVisible'));
   } else {
@@ -43,9 +45,10 @@ export class PhraseCenterComponent {
       this.selectedPhraseIds = state.selectedPhraseIds;
       this.isAllPhraseSelected = state.selectedPhraseIds.size === state.phrases.size;
       this.displayingPhraseType = state.displayingPhraseType;
-      this.phrases = filterPhrasesByDisplayingType(
+      this.phrases = state.phrases;
+      this.displayingPhrases = filterPhrasesByDisplayingType(
         populatePhrasesSelected(state.phrases, this.selectedPhraseIds),
-        this.displayingPhraseTyp
+        this.displayingPhraseType
       );
       this.selectedPhraseNumber = this.selectedPhraseIds.size;
     });
@@ -69,6 +72,10 @@ export class PhraseCenterComponent {
 
   hideSelectedPhrase() {
     this.actions.hideSelectedPhrase();
+  }
+
+  setVisibleButtonClick() {
+    this.actions.setVisibleButtonClick();
   }
 
   updateDisplayingPhraseType(type) {

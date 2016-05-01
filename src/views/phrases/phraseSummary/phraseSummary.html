@@ -5,7 +5,7 @@
         ng-class="{selected: (vm.displayingPhraseType === 'visible')}"
         ng-click="vm.handleFilterTabClick({type: 'visible'})">
       <span class="highlight">
-        1
+        {{vm.phraseCounts.visible}}
       </span>
       visible phrases
       </a>
@@ -16,7 +16,7 @@
         ng-click="vm.handleFilterTabClick({type: 'hidden'})"
       >
         <span class="highlight">
-          0
+          {{vm.phraseCounts.hidden}}
         </span>
           hidden phrases
       </a>
@@ -27,7 +27,7 @@
         ng-click="vm.handleFilterTabClick({type: 'all'})"
       >
         <span class="highlight">
-          52
+          {{vm.phraseCounts.hidden + vm.phraseCounts.visible}}
         </span>
         phrases in total
       </a>

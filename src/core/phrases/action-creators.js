@@ -4,6 +4,7 @@ import {
   SELECT_ONE_PHRASE,
   HIDE_SELECTED_PHRASE,
   UPDATE_DISPLAYING_PHRASE_TYPE,
+  SET_SELECTED_PHRASE_VISIBLE
 } from './action-types';
 import {
   modalActions
@@ -48,6 +49,12 @@ export function selectOnePhrase(phraseId) {
 export function hideSelectedPhrase() {
   return {
     type: HIDE_SELECTED_PHRASE,
+  };
+}
+
+export function setVisibleButtonClick() {
+  return {
+    type: SET_SELECTED_PHRASE_VISIBLE,
   };
 }
 

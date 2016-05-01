@@ -5,6 +5,7 @@ import {
   TOGGLE_ALL_PHRASE,
   SELECT_ONE_PHRASE,
   HIDE_SELECTED_PHRASE,
+  SET_SELECTED_PHRASE_VISIBLE,
   UPDATE_DISPLAYING_PHRASE_TYPE,
 } from './action-types';
 
@@ -66,10 +67,25 @@ export const phraseReducer = createReducer(INITIAL_STATE, {
     );
     return state.setIn(['ui', 'selectedPhraseIds'], newSelectedPhraseIds);
   },
-  [HIDE_SELECTED_PHRASE](state, action) {
-    debugger;
+  [HIDE_SELECTED_PHRASE](state) {
+    const phrases = state.getIn(['data', 'phrases']);
+    return state.withMutations(state => {
+      state.getIn(['ui', 'selectedPhraseIds']).forEach(id => {
+        const index = phrases.findIndex(phrase => phrase.get('id') === id);
+        state.updateIn(['data', 'phrases', index], phrase => phrase.set('isVisible', false));
+      });
+    });
+  },
+  [SET_SELECTED_PHRASE_VISIBLE](state) {
+    const phrases = state.getIn(['data', 'phrases']);
+    return state.withMutations(state => {
+      state.getIn(['ui', 'selectedPhraseIds']).forEach(id => {
+        const index = phrases.findIndex(phrase => phrase.get('id') === id);
+        state.updateIn(['data', 'phrases', index], phrase => phrase.set('isVisible', true));
+      });
+    });
   },
   [UPDATE_DISPLAYING_PHRASE_TYPE](state, action) {
-    return state.setIn(['ui', 'displayingPhraseType'], action.payload.phraseType)
+    return state.setIn(['ui', 'displayingPhraseType'], action.payload.phraseType);
   },
 });

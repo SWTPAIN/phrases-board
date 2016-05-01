@@ -1,4 +1,5 @@
 <phrase-summary
+  phrases="vm.phrases"
   displaying-phrase-type="vm.displayingPhraseType"
   handle-filter-tab-click="vm.updateDisplayingPhraseType(type)"
 ></phrase-summary>
@@ -10,9 +11,10 @@
   selected-phrase-number="vm.selectedPhraseNumber"
   handle-select-all-click="vm.toggleAllPhrase()"
   handle-hide-button-click="vm.hideSelectedPhrase()"
+  handle-set-visible-button-click="vm.setVisibleButtonClick()"
 ></action-bar>
 <phrase-list
-  model="vm.phrases"
+  model="vm.displayingPhrases"
   handle-item-select-checkbox-click="vm.selectOnePhrase(phraseId)"
   handle-item-add-note-click="vm.showAddNoteModal(phraseId)"
 ></phrase-list>
