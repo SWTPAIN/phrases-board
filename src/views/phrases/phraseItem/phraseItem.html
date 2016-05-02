@@ -21,15 +21,16 @@
             </span>
             {{vm.model.context}}
           </div>
-          <div class='notes'>
-            <div ng-repeat="note in vm.model.notes track by $index">
-              {{note}}
-            </div>
-          </div>
         </div>
       </div>
       <div class='phrase-body'>
         <div ng-bind-html="vm.model.value"></div>
+      </div>
+      <div class='phrase-notes'>
+        <h4>Saved Notes</h4>
+        <div ng-repeat="note in vm.model.notes track by $index">
+          {{note}}
+        </div>
       </div>
       <div class='phrase-footer'>
         <div class='fr'>

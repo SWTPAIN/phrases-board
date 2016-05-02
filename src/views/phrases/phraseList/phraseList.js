@@ -1,6 +1,6 @@
 import { Component } from 'src/utils';
 import template from './phraseList.html';
-
+import './phraseList.scss';
 
 @Component({
   bindings: {

@@ -1,3 +1,28 @@
-.selected {
-  color: red;
+
+.project-nav-phrase-meta {
+  border: 1px solid #bec2c7;
+  padding: 15px 0;
+  border-radius: 5px;
+  background: #fff;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.project-nav-phrase-meta-list {
+  float: left;
+  width: 100%;
+  text-align: center;
+  .highlight {
+    color: #fb3;
+    font-weight: 600;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+
+    &.selected {
+      color: #2ea8e6;
+    }
+
+  }
 }

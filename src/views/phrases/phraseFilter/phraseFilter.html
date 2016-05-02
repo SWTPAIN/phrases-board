@@ -15,13 +15,16 @@
         </form>
       </div>
       <div class='content-box-header-content fr'>
-        <select
-          ng-change="vm.handleSelectFilter({type: vm.displayingPhraseType})"
-          ng-model="vm.displayingPhraseType">
-          <option value="all">All Phrases</option>
-          <option value="visible">Visible Phrases</option>
-          <option value="hidden">Hidden Phrases</option>
-        </select>
+        <div class="count-unit">
+          Filter:
+          <select
+            ng-change="vm.handleSelectFilter({type: vm.displayingPhraseType})"
+            ng-model="vm.displayingPhraseType">
+            <option value="all">All Phrases</option>
+            <option value="visible">Visible Phrases</option>
+            <option value="hidden">Hidden Phrases</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>

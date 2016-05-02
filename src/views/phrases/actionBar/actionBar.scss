@@ -10,3 +10,23 @@
     transform: translateY(-50px);
   }
 }
+
+.content-box-subheader {
+  box-sizing: border-box;
+  background: #fafafa;
+  border-left: 1px solid #bec2c7;
+  border-right: 1px solid #bec2c7;
+  border-top: 1px solid #bec2c7;
+  padding: 6px 19px 7px 0px;
+  color: #4d4d4d;
+}
+
+.bulk-actions-box .selected-lang-no {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 11px;
+  margin-left: 15px;
+  vertical-align: middle;
+  color: #2ea8e6;
+}

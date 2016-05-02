@@ -1,0 +1,56 @@
+.phrase-manage-list-item {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 15px;
+  padding-right: 20px;
+  padding-left: 40px;
+  margin-top: 1px;
+  float: left;
+  border-bottom: 1px solid #E4E7EB;
+  width: 100%;
+  background: #fff;
+}
+
+.media, .media-body {
+  overflow: hidden;
+  zoom: 1;
+}
+
+
+.phrase-manage-list-container .phrase-header {
+  margin-bottom: 15px;
+}
+
+
+.phrase-manage-list-container .phrase-body {
+  margin-bottom: 20px;
+  width: auto;
+}
+
+.phrase-manage-list-container .phrase-notes {
+  margin-bottom: 20px;
+  width: auto;
+}
+
+.phrase-manage-list-container .phrase-footer {
+  clear: both;
+  width: 100%;
+}
+
+
+.phrase-manage-list-container .fr {
+  float: right;
+}
+
+
+.phrase-actions {
+  list-style: none;
+
+  li {
+    float: left;
+    font-size: 13px;
+    line-height: 31px;
+    padding: 0 12px;
+  }
+}
